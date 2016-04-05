@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+ <%@include file="./validatelogin.jsp" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -14,7 +16,7 @@
     <meta name="author" content="Suono Libero ( @rivathemes.com )">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <title>Envor HTML5/CSS3 Template</title>
+    <title></title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -52,7 +54,6 @@
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
-   
    	<%@include file="./header.jsp" %>
    
    <div class="envor-content" style="padding-top: 0px;">
@@ -61,7 +62,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>用户注册
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>高校查询
               </div>
             </div>
           </div>
@@ -71,85 +72,43 @@
       <section class="envor-section">
         <div class="container">
           <div class="row" style="margin-bottom: 30px">
-           <div class="col-lg-12 col-md-12">
-             
-
-              <div class="riva-toggle-tab" style="display: block;">
-                <h2><strong>用户注册</strong> </h2>
-                <form class="envor-f1" action="doregister" method="post">
-                  <p><label for="rt1-first-name">姓名*</label><input type="text" name='user.nickname'></p>
-                  <p><label for="rt1-phone">用户名*</label><input type="text"  name='user.name'></p>
-                  <p><label for="rt1-email">电子邮箱*</label><input type="text"  name='user.email'></p>
-                  <p><label for="rt1-mobile">性别</label> <select  name='user.sex'>
-                      <option>男</option>
-                      <option>女</option>
-                    </select></p>
-                  <p><label for="rt1-fax">学校</label><input type="text"  name='user.school'></p>
-                  <p><label for="rt1-country">密码*</label><input type="text"  name='user.password'></p>
-                    <p><label for="rt1-city">城市*</label><input type="text"  name='user.city'></p>
-                
-                  <p><label for="rt1-city">家庭住址*</label><input type="text"  name='user.address'></p>
-                  
-                  <p><input type="submit" value="立即注册" class="envor-btn envor-btn-normal envor-btn-primary"></p>
-                </form>
-              </div>
-              <!--
-
-              Voice It Form tab
-
-              //-->
-              <div class="riva-toggle-tab" style="display: none;">
-                <h2><strong>Voice It</strong> Form</h2>
-                <form class="envor-f1">
-                  <p><label for="rt3-areyou">Are you?*</label>
-                    <select name="rt3-areyou" id="rt3-areyou">
-                      <option>A Business Partner of ENVOR</option>
-                      <option>Not a Business Partner of ENVOR</option>
-                    </select>
-                  </p>
-                  <p><label for="rt3-reg">Would you like to register a*</label>
-                    <select name="rt3-reg" id="rt3-reg">
-                      <option>Select</option>
-                      <option>Complaint</option>
-                      <option>Compliment</option>
-                      <option>Suggestion</option>
-                    </select>
-                  </p>
-                  <p><label for="rt3-company">Company*</label><input type="text" id="rt3-company"></p>
-                  <p><label for="rt3-first-name">Full name*</label><input type="text" id="rt3-first-name"></p>
-                  <p><label for="rt3-job-title">Job title*</label>
-                    <select name="rt3-job-title" id="rt3-job-title">
-                      <option>Select Position</option>
-                      <option>CEO</option>
-                      <option>Director</option>
-                      <option>Executive Officer</option>
-                      <option>Executive Director</option>
-                      <option>Manager</option>
-                      <option>Senior Manager</option>
-                      <option>Others</option>
-                    </select>
-                  </p>
-                  <p><label for="rt3-phone">Phone</label><input type="text" id="rt3-phone"></p>
-                  <p><label for="rt3-mobile">Mobile</label><input type="text" id="rt3-mobile"></p>
-                  <p><label for="rt3-email">Email Address*</label><input type="text" id="rt3-email"></p>
-                  <p><label for="rt3-details">Please provide us with a brief of your feedback*</label><textarea id="rt3-details"></textarea></p>
-                  <p><label for="rt3-attachment">Attachment*</label><input type="file" id="rt3-attachment"></p>
-                  <p><input type="submit" value="立即注册" class="envor-btn envor-btn-normal envor-btn-primary"></p>
-                </form>
-              </div>
-            <!--
-
-            Map & Form end
-
-            //-->
+          		<div class="col-lg-3 col-md-3">
+              	<nav class="envor-side-navi">
+                <ul>
+                   <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
+                   <li  class="active" ><i class="glyphicon glyphicon-arrow-right"></i> <a href="myvote">我的投票</a></li>
+           
+                </ul>
+              </nav>
+            </div>	
+            <div class="col-lg-9 col-md-9">
+            <h2 class="align-left" style="margin-top: 0px;">我的投票</h2>
+            <div > 
+            <table class="table table-bordered">
+			<thead>
+				<tr>
+					  <th>主题</th>
+						<th>我的选择</th>
+						<th>投票日期</th>
+				 </tr>
+			</thead>
+			<tbody>
+			<tr>
+					 	 <th>你选择你支持的校长</th>
+						<th>潘小琪</th>
+						<th>2016-04-05 </th>
+				 </tr>
+			</tbody>
+			</table>
             </div>
-			</div>
-			
+            </div>
+		  </div>
         </div>
       </section>
     </div>
     
 	<%@include file="./footer.jsp" %>
+    <jsp:include page="./footer.jsp"></jsp:include>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

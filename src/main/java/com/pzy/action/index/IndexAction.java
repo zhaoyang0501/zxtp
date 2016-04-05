@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pzy.entity.Area;
 import com.pzy.entity.Category;
+import com.pzy.entity.Choose;
 import com.pzy.entity.HistoryMajor;
 import com.pzy.entity.HistoryScore;
 import com.pzy.entity.Myplan;
@@ -21,8 +22,10 @@ import com.pzy.entity.Plan;
 import com.pzy.entity.School;
 import com.pzy.entity.ScoreLine;
 import com.pzy.entity.User;
+import com.pzy.entity.VoteResult;
 import com.pzy.service.AreaService;
 import com.pzy.service.CategoryService;
+import com.pzy.service.ChooseService;
 import com.pzy.service.HistoryMajorService;
 import com.pzy.service.HistoryScoreService;
 import com.pzy.service.MyplanService;
@@ -62,11 +65,18 @@ public class IndexAction extends ActionSupport {
 	
 	private List<Area> areas;
 	
+	private List<VoteResult>  voteResults;
+	private Choose choose;
+	
 	private Myplan myplan;
 	private News news;
 	private List<News> newss;
 	private Category category;
 	private Integer  type;
+	
+	private Integer total;
+	@Autowired
+	private ChooseService chooseService;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -87,6 +97,8 @@ public class IndexAction extends ActionSupport {
 	private AreaService areaService;
 	@Autowired
 	private ScoreLineService scoreLineService;
+	
+	
 	public List<Category> getCategorys() {
 		return categorys;
 	}
@@ -220,6 +232,31 @@ public class IndexAction extends ActionSupport {
 		category=categoryService.find(category.getId());
 		return SUCCESS;
 	}
+	
+	@Action(value = "votesubmit", 	results = { @Result(name = "success" , location = "/WEB-INF/views/viewvoteresult.jsp") ,
+												@Result(name = "login", location = "/WEB-INF/views/login.jsp") })
+	public String votesubmit() throws Exception {
+		
+		User user=(User)ActionContext.getContext().getSession().get("user");
+		if(user==null){
+			this.tip="没有登录";
+			return LOGIN; 
+		}
+		
+		choose.setUser(user);
+		this.chooseService.save(choose);
+		voteResults= categoryService.findVoteResult(choose.getCategory().getId());
+		 total=0;
+		for(VoteResult voteResult:voteResults){
+			total+= voteResult.getNum();
+		}
+		for(VoteResult voteResult:voteResults){
+			voteResult.setNum(total==0?0:(100*voteResult.getNum())/total);
+		}
+		category=categoryService.find(choose.getCategory().getId());
+		return SUCCESS;
+	}
+	
 	/***
 	 * 加入到我的自选
 	 * @return
@@ -444,5 +481,23 @@ public class IndexAction extends ActionSupport {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public Choose getChoose() {
+		return choose;
+	}
+	public void setChoose(Choose choose) {
+		this.choose = choose;
+	}
+	public List<VoteResult> getVoteResults() {
+		return voteResults;
+	}
+	public void setVoteResults(List<VoteResult> voteResults) {
+		this.voteResults = voteResults;
+	}
+	public Integer getTotal() {
+		return total;
+	}
+	public void setTotal(Integer total) {
+		this.total = total;
 	}
 }

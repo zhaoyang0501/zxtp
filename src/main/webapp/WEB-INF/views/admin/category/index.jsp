@@ -110,7 +110,7 @@
 								</div>
 							</div>
 							<div class="control-group" id='control_project'>
-								<label for="remark" class="control-label">专业描述：</label>
+								<label for="remark" class="control-label">描述：</label>
 								<div class="controls">
 									<textarea id="remark" placeholder="" rows="9">
 									</textarea>

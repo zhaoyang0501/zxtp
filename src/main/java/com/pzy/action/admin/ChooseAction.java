@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pzy.entity.BigType;
 import com.pzy.entity.Category;
+import com.pzy.entity.Item;
 import com.pzy.service.BigTypeService;
 import com.pzy.service.CategoryService;
 
@@ -23,9 +24,9 @@ import com.pzy.service.CategoryService;
  * @author 263608237@qq.com
  *
  */
-@Namespace("/admin/category")
+@Namespace("/admin/choose")
 @ParentPackage("json-default")
-public class CategoryAction extends ActionSupport {
+public class ChooseAction extends ActionSupport {
 	/**
 	 * 
 	 */
@@ -38,6 +39,7 @@ public class CategoryAction extends ActionSupport {
 	private String name;
 	private Long id;
 	private Category category;
+	private Item item;
 	private List<Category> categorys;
 	private List<BigType> bigtypes;
 	@Autowired
@@ -45,9 +47,8 @@ public class CategoryAction extends ActionSupport {
 	@Autowired
 	private BigTypeService bigTypeService;
 	
-	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/category/index.jsp") })
+	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/choose/index.jsp") })
 	public String index() {
-		bigtypes=bigTypeService.findAll();
 		categorys = categoryService.findCategorys();
 		return SUCCESS;
 	}
@@ -55,62 +56,11 @@ public class CategoryAction extends ActionSupport {
 	@Action(value = "list", results = { @Result(name = "success", type = "json") }, params = {
 			"contentType", "text/html" })
 	public String list() {
-		int pageNumber = (int) (iDisplayStart / iDisplayLength) + 1;
-		int pageSize = iDisplayLength;
-		Page<Category> list = categoryService.findAll(pageNumber, pageSize,
-				name);
-		resultMap.put("aaData", list.getContent());
-		resultMap.put("iTotalRecords", list.getTotalElements());
-		resultMap.put("iTotalDisplayRecords", list.getTotalElements());
-		resultMap.put("sEcho", sEcho);
+		resultMap.put("aaData", categoryService.findVoteResult(id));
 		return SUCCESS;
 	}
 
-	@Action(value = "delete", results = { @Result(name = "success", type = "json") }, params = {
-			"contentType", "text/html" })
-	public String delete() {
-		try {
-			categoryService.delete(id);
-			resultMap.put("state", "success");
-			resultMap.put("msg", "删除成功");
-		} catch (Exception e) {
-			resultMap.put("state", "error");
-			resultMap.put("msg", "删除失败，外键约束");
-		}
-
-		return SUCCESS;
-	}
-
-	@Action(value = "get", results = { @Result(name = "success", type = "json") }, params = {
-			"contentType", "text/html" })
-	public String get() {
-		resultMap.put("category", categoryService.find(id));
-		resultMap.put("state", "success");
-		resultMap.put("msg", "删除成功");
-		return SUCCESS;
-	}
-
-	@Action(value = "update", results = { @Result(name = "success", type = "json") }, params = {
-			"contentType", "text/html" })
-	public String update() {
-		Category bean = categoryService.find(category.getId());
-		bean.setName(category.getName());
-		bean.setRemark(category.getRemark());
-		categoryService.save(bean); 
-		resultMap.put("state", "success");
-		resultMap.put("msg", "修改成功");
-		return SUCCESS;
-	}
-
-	@Action(value = "save", results = { @Result(name = "success", type = "json") }, params = {
-			"contentType", "text/html" })
-	public String save() {
-		category.setCreateDate(new Date(System.currentTimeMillis()));
-		categoryService.save(category);
-		resultMap.put("state", "success");
-		resultMap.put("msg", "保存成功");
-		return SUCCESS;
-	}
+	
 
 	/* ~~~~~~~~get and setter~~~~~~~~~ */
 	@JSON
@@ -184,4 +134,13 @@ public class CategoryAction extends ActionSupport {
 	public void setBigtypes(List<BigType> bigtypes) {
 		this.bigtypes = bigtypes;
 	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	
 }

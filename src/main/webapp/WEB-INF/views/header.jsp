@@ -85,14 +85,14 @@
                       <a href="index">首页</a>
                     </li>
                     <li>
-                      <a href="plan">投票列表</a>
+                      <a href="vote">投票列表</a>
                     </li>
                      <li>
-                       <a href="category">新闻公告</a>
+                       <a href="news">新闻公告</a>
                     </li>
                     
                     <li>
-                      <a href="category">个人中心</a>
+                      <a href="center">个人中心</a>
                     </li>
                    
                      <li>

@@ -73,10 +73,8 @@
            <div class="col-lg-3 col-md-3">
               	<nav class="envor-side-navi">
                 <ul>
-                  <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="plan">我的方案</a></li>
-                   <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="createplan">创建方案</a></li>
-                  <li><i class="glyphicon glyphicon-arrow-right"></i> <a href="apply">我的申请</a></li>
-                  <li  class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
+                  <li class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
+                  <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="myvote">我的投票</a></li>
                 </ul>
               </nav>
             </div>	

@@ -61,7 +61,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>高考周报
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>新闻管理
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
         <div class="container">
           <div class="row" style="margin-bottom: 30px">
 			  <div class="col-lg-9 col-md-9">
-              <p class="blog-cat"> <strong>高考周报</strong></p>
+              <p class="blog-cat"> <strong>新闻</strong></p>
               <c:forEach items="${newss}" var="bean">
                 <article class="envor-post">
                 <header>

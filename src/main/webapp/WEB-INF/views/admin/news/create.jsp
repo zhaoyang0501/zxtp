@@ -47,7 +47,7 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>创建周报</h3>
+								<h3>创建新闻</h3>
 							</div>
 							
 							<div class="widget-container">

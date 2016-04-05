@@ -31,7 +31,7 @@ public class Category {
 	
 	private String type;
 	
-	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL) 
+	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL, mappedBy = "category") 
 	private List<Item> items;
 	
 	public List<Item> getItems() {
@@ -78,6 +78,11 @@ public class Category {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
+	 public void removeItem(Item item) {
+	        if (this.items.contains(item)) {
+	            item.setCategory(null);
+	            this.items.remove(item);
+	        }
+	    }
 	
 }

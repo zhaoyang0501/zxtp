@@ -1,6 +1,7 @@
 
 package com.pzy.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -17,13 +18,19 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.pzy.entity.Category;
+import com.pzy.entity.Item;
+import com.pzy.entity.VoteResult;
 import com.pzy.repository.CategoryRepository;
+import com.pzy.repository.ItemRepository;
 
 @Service
 public class CategoryService {
 	
     @Autowired
     private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private ItemRepository itemRepository;
     public List<Category> findAll() {
          return (List<Category>) categoryRepository.findAll();
     }
@@ -61,16 +68,39 @@ public class CategoryService {
         Page<Category> result = (Page<Category>) categoryRepository.findAll(spec, pageRequest);
         return result;
     	}
+    
+        public List<VoteResult> findVoteResult(Long id){
+        	List<Object[]> lists=categoryRepository.findVoteResult(id);
+        	List<VoteResult> voteResults= new ArrayList<VoteResult>();
+        	for(Object[] objary:lists){
+        		VoteResult voteResult=new VoteResult(objary[0],objary[1],objary[2]);
+        		voteResults.add(voteResult);
+        	}
+        	return voteResults;
+        } 
 		public void delete(Long id){
 			categoryRepository.delete(id);
 		}
+		public void deleteItem(Long id){
+			itemRepository.delete(id);
+		}
+		public void deleteItem(Item item){
+			itemRepository.delete(item);
+		}
+		
 		public Category findCategory(Long id){
 			  return categoryRepository.findOne(id);
 		}
 		public Category find(Long id){
 			  return categoryRepository.findOne(id);
 		}
+		public Item findItem(Long id){
+			  return itemRepository.findOne(id);
+		}
 		public void save(Category category){
 			categoryRepository.save(category);
+		}
+		public void saveItem(Item item){
+			itemRepository.save(item);
 		}
 }

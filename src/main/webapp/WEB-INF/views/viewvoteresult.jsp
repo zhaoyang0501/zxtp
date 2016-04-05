@@ -61,7 +61,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>用户注册
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>投票结果
               </div>
             </div>
           </div>
@@ -70,81 +70,50 @@
       
       <section class="envor-section">
         <div class="container">
+         <c:if test="${tip!=null }">
+      <div class="envor-msg envor-msg-info">
+                <header>
+                	  提示!
+                  <i class="fa fa-times"></i>
+                </header>
+                <p>${tip }</p>
+          </div>
+      </c:if>
           <div class="row" style="margin-bottom: 30px">
-           <div class="col-lg-12 col-md-12">
+          <div class='col-lg-12'>
+         	<article class="envor-post">
              
-
-              <div class="riva-toggle-tab" style="display: block;">
-                <h2><strong>用户注册</strong> </h2>
-                <form class="envor-f1" action="doregister" method="post">
-                  <p><label for="rt1-first-name">姓名*</label><input type="text" name='user.nickname'></p>
-                  <p><label for="rt1-phone">用户名*</label><input type="text"  name='user.name'></p>
-                  <p><label for="rt1-email">电子邮箱*</label><input type="text"  name='user.email'></p>
-                  <p><label for="rt1-mobile">性别</label> <select  name='user.sex'>
-                      <option>男</option>
-                      <option>女</option>
-                    </select></p>
-                  <p><label for="rt1-fax">学校</label><input type="text"  name='user.school'></p>
-                  <p><label for="rt1-country">密码*</label><input type="text"  name='user.password'></p>
-                    <p><label for="rt1-city">城市*</label><input type="text"  name='user.city'></p>
-                
-                  <p><label for="rt1-city">家庭住址*</label><input type="text"  name='user.address'></p>
-                  
-                  <p><input type="submit" value="立即注册" class="envor-btn envor-btn-normal envor-btn-primary"></p>
-                </form>
-              </div>
+                 
+                <header>
+                  <h3 style="margin-top: 0px;"><i class="fa fa-pencil"></i> <span>${category.name }</span></h3>
+                  <p>${category.remark }</p>
+                </header>
+                <form action=votesubmit method="post" class='envor-f1'>
+                 <input type="hidden" name="choose.category.id"  value="${category.id}" >
+                 	<div class="container">
+               			<ol>
+				 		<c:forEach items="${voteResults}" var="bean">
+	               			<li style="width: 70%">
+	               			 ${bean.name }:<div class="progress">
+							   <div class="progress-bar progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width:${bean.num}%;">
+							    ${bean.num}%
+							  </div>
+							</div>
+							</li>
+               			</c:forEach>
+						</ol>
+               		</div>
+             
+                 </form>     
               <!--
 
-              Voice It Form tab
+              Post end
 
               //-->
-              <div class="riva-toggle-tab" style="display: none;">
-                <h2><strong>Voice It</strong> Form</h2>
-                <form class="envor-f1">
-                  <p><label for="rt3-areyou">Are you?*</label>
-                    <select name="rt3-areyou" id="rt3-areyou">
-                      <option>A Business Partner of ENVOR</option>
-                      <option>Not a Business Partner of ENVOR</option>
-                    </select>
-                  </p>
-                  <p><label for="rt3-reg">Would you like to register a*</label>
-                    <select name="rt3-reg" id="rt3-reg">
-                      <option>Select</option>
-                      <option>Complaint</option>
-                      <option>Compliment</option>
-                      <option>Suggestion</option>
-                    </select>
-                  </p>
-                  <p><label for="rt3-company">Company*</label><input type="text" id="rt3-company"></p>
-                  <p><label for="rt3-first-name">Full name*</label><input type="text" id="rt3-first-name"></p>
-                  <p><label for="rt3-job-title">Job title*</label>
-                    <select name="rt3-job-title" id="rt3-job-title">
-                      <option>Select Position</option>
-                      <option>CEO</option>
-                      <option>Director</option>
-                      <option>Executive Officer</option>
-                      <option>Executive Director</option>
-                      <option>Manager</option>
-                      <option>Senior Manager</option>
-                      <option>Others</option>
-                    </select>
-                  </p>
-                  <p><label for="rt3-phone">Phone</label><input type="text" id="rt3-phone"></p>
-                  <p><label for="rt3-mobile">Mobile</label><input type="text" id="rt3-mobile"></p>
-                  <p><label for="rt3-email">Email Address*</label><input type="text" id="rt3-email"></p>
-                  <p><label for="rt3-details">Please provide us with a brief of your feedback*</label><textarea id="rt3-details"></textarea></p>
-                  <p><label for="rt3-attachment">Attachment*</label><input type="file" id="rt3-attachment"></p>
-                  <p><input type="submit" value="立即注册" class="envor-btn envor-btn-normal envor-btn-primary"></p>
-                </form>
-              </div>
-            <!--
-
-            Map & Form end
-
-            //-->
-            </div>
-			</div>
-			
+              </article>  
+                 		 		
+          </div>
+          	
         </div>
       </section>
     </div>
@@ -176,6 +145,26 @@
     <script src="js/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
     <script src="js/jquery.rivathemes.js"></script>
     <script type="text/javascript">
+    $('document').ready(function() {
+        /*
+
+        Sorting
+
+        */
+        $('#faq-sorting').rivaSorting({
+          showAll : 1
+        });
+        /*
+
+        Footer News Slider
+
+        */
+        $('#footer-news').rivaSlider({
+          visible : 1,
+          selector : 'envor-post-preview'
+        });
+    });
+
       $('document').ready(function() {
           /*
 

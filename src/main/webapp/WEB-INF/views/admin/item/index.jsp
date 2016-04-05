@@ -4,7 +4,7 @@
 <html lang="ch">
 <%@ include file="../common/meta.jsp"%>
 <head>
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/ace/admin.news.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/ace/admin.item.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/falgun/bootbox.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -39,23 +39,27 @@
 					<div class="span12">
 						<div class="content-widgets ">
 							<div class="widget-head  bondi-blue" >
-								<h3>新闻管理</h3>
+								<h3>投票选项设置</h3>
 							</div>
 							<div class="box well form-inline">
-								<span>标题：</span>
-								<input type="text" id="_name" >
-								<a onclick="$.adminNews.initSearchDataTable()"
+								<span>所有投票主题：</span>
+								<select id='_name'>
+								<c:forEach items="${categorys }" var="bean">
+								<option value="${bean.id }">${bean.name }</option>	
+								</c:forEach>
+								
+								</select>
+								<a onclick="$.adminItem.initSearchDataTable()"
 									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>
 							</div>
-								
+								<a class="btn btn-success" style="float: right; margin: 5px;" onclick="$.adminItem.showaddModal()"><i class="icon-plus"></i> 新增</a>
 								<table class="responsive table table-striped table-bordered"
-									id="dt_table_view">
+									id="dt_item_view">
 									<thead>
 										<tr>
-											<th >id</th>
-											<th >标题</th>
-											<th >正文</th>
-											<th >发布时间</th>
+											<th >选项</th>
+											<th >排序</th>
+											<th >操作</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -70,30 +74,27 @@
 	</div>
 
 	<!-- 编辑新增弹出框 -->
-	<div class="modal hide fade" id="_modal">
+	<div class="modal hide fade" id="item_modal">
 		<div class="modal-header blue">
 			<button type="button" class="close" data-dismiss="modal">×</button>
-			<label id="_modal_header_label"></label>
+			<label id="item_modal_header_label"></label>
 		</div>
-		<div class="modal-body" style="min-height: 400px;">
+		<div class="modal-body" style="min-height: 200px;">
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="form-container grid-form form-background left-align form-horizontal">
 						<form action="" method="get" id=''>
-							<input type="hidden" id="id" value="">
-							
+							<input type="hidden" id="itemId" value="">
 							<div class="control-group">
-								<label for="title" class="control-label">新闻标题：</label>
+								<label for="name" class="control-label">选项：</label>
 								<div class="controls">
-									<input type="text" id="title" placeholder="">
+									<input type="text" id="name" placeholder="">
 								</div>
 							</div>
-							<div class="control-group" id='control_projectStep'>
-								<label for="context" class="control-label">新闻内容：</label>
+							<div class="control-group">
+								<label for="name" class="control-label">排序：</label>
 								<div class="controls">
-									<textarea id='context' name=context rows="15" cols="">
-									
-									</textarea>
+									<input type="text" id="ordernum" placeholder="">
 								</div>
 							</div>
 						</form>
@@ -103,7 +104,7 @@
 		</div>
 		
 		<div class="modal-footer center" id="div_footer">
-			<a class="btn btn-primary" onclick="$.adminNews.save()">保存</a>
+			<a class="btn btn-primary" onclick="$.adminItem.save()">保存</a>
 			<a href="#" class="btn" data-dismiss="modal" id="closeViewModal">关闭</a>
 		</div>
 	</div>

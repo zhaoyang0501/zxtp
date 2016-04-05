@@ -61,7 +61,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>高考周报查看
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>新闻查看
               </div>
             </div>
           </div>

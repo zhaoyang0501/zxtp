@@ -88,8 +88,8 @@
                   <h3 style="margin-top: 0px;"><i class="fa fa-pencil"></i> <span>${category.name }</span></h3>
                   <p>${category.remark }</p>
                 </header>
-                <form action="surveysubmit" method="post" class='envor-f1'>
-                 <input type="hidden" name="id"  value="${category.id }" >
+                <form action=votesubmit method="post" class='envor-f1'>
+                 <input type="hidden" name="choose.category.id"  value="${category.id}" >
                  	<div class="container">
                			<ol>
 				 			 
@@ -97,7 +97,7 @@
 	               			<li>
 	               			<div class="radio">
 	               			<label class="">
-							  <input type="radio" name=""  value="a" >
+							  <input type="radio" name="choose.item.id"  value="${bean.id}" >
 							  ${bean.name }
 							</label>
 							</div>
