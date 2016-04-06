@@ -18,7 +18,7 @@ import com.pzy.service.AdminUserService;
 /***
  * @author 263608237@qq.com
  * 
- *
+ *管理员管理
  */
 @Namespace("/admin/adminuser")
 @ParentPackage("json-default")

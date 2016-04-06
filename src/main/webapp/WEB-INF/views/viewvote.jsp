@@ -13,7 +13,7 @@
     <meta name="description" content="Envor HTML5/CSS3 Template">
     <meta name="author" content="Suono Libero ( @rivathemes.com )">
     <link rel="shortcut icon" href="favicon.ico">
-
+   <%@include file="./validatelogin.jsp" %>
     <title>Envor HTML5/CSS3 Template</title>
 
     <!-- Bootstrap core CSS -->

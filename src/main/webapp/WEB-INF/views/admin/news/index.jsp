@@ -54,7 +54,6 @@
 										<tr>
 											<th >id</th>
 											<th >标题</th>
-											<th >正文</th>
 											<th >发布时间</th>
 										</tr>
 									</thead>

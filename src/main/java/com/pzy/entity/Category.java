@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 /***
- * 分类
+ * 投票主题
  *
  */
 import javax.persistence.Entity;

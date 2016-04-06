@@ -128,6 +128,7 @@ jQuery.adminCategory = {
 	    				"category.name":$("#name").val(),
 	    				"category.state":$("#state").val(),
 	    				"category.type":$("#type").val(),
+	    				"category.state":$("#state").val(),
 	    				"category.remark":$("#remark").val()
 	    			},
 	    			dataType : "json",
@@ -148,7 +149,9 @@ jQuery.adminCategory = {
 	    			data:{
 	    				"category.id":$("#categoryId").val(),
 	    				"category.name":$("#name").val(),
-	    				"category.bigType.id":$("#bigtype").val(),
+	    				"category.state":$("#state").val(),
+	    				"category.type":$("#type").val(),
+	    				"category.state":$("#state").val(),
 	    				"category.remark":$("#remark").val()
 	    			},
 	    			dataType : "json",

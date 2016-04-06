@@ -130,75 +130,13 @@
 							</div>
 							
 							<div class="control-group" id='control_projectStep'>
-								<label for="job" class="control-label">职业：</label>
-								<div class="controls">
-									<select id="area" name="area" class="sel_style sel_w1">
-										<option selected="selected" value="北京">北京</option>
-										<option value="天津">天津</option>
-										<option value="上海">上海</option>
-										<option value="重庆">重庆</option>
-										<option value="河北">河北</option>
-										<option value="河南">河南</option>
-										<option value="山东">山东</option>
-										<option value="山西">山西</option>
-										<option value="安徽">安徽</option>
-										<option value="江西">江西</option>
-										<option value="江苏">江苏</option>
-										<option value="浙江">浙江</option>
-										<option value="湖北">湖北</option>
-										<option value="湖南">湖南</option>
-										<option value="广东">广东</option>
-										<option value="广西">广西</option>
-										<option value="云南">云南</option>
-										<option value="贵州">贵州</option>
-										<option value="四川">四川</option>
-										<option value="陕西">陕西</option>
-										<option value="青海">青海</option>
-										<option value="宁夏">宁夏</option>
-										<option value="黑龙江">黑龙江</option>
-										<option value="吉林">吉林</option>
-										<option value="辽宁">辽宁</option>
-										<option value="西藏">西藏</option>
-										<option value="新疆">新疆</option>
-									</select>
-								</div>
-							</div>
-							
-							<div class="control-group" id='control_projectStep'>
-								<label for="address" class="control-label">城市：</label>
-								<div class="controls">
-									<input type="text" id="city" placeholder="">
-								</div>
-							</div>
-							<div class="control-group" id='control_projectStep'>
-								<label for="address" class="control-label">身份证号码：</label>
-								<div class="controls">
-									<input type="text" id="cardid" placeholder="">
-								</div>
-							</div>
-							<div class="control-group" id='control_projectStep'>
-								<label for="address" class="control-label">毕业学校：</label>
+								<label for="address" class="control-label">学校：</label>
 								<div class="controls">
 									<input type="text" id="school" placeholder="">
 								</div>
 							</div>
-							<div class="control-group" id='control_projectStep'>
-								<label for="address" class="control-label">高考成绩：</label>
-								<div class="controls">
-									<input type="text" id="score" placeholder="">
-								</div>
-							</div>
-							<div class="control-group" id='control_projectStep'>
-								<label for="address" class="control-label">所属科类：</label>
-								<div class="controls">
-									<select id="type" name="type" class="sel_style sel_w1">
-									<option value="文科">文科</option>
-									<option value="理科">理科</option>
-									<option value="艺术类"> 艺术类</option>
-									<option value="体育类 ">体育类 </option>
-									</select>
-								</div>
-							</div>
+							
+							
 						</form>
 					</div>
 				</div>

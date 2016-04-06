@@ -30,8 +30,6 @@ public class User implements Serializable {
 	private String address;
 	private Date birthday;
 	private String sex;
-	@ManyToOne(fetch = FetchType.EAGER)	
-	private Area area;
 	private String city;
 	private String cardid;
 	private String school;
@@ -77,13 +75,7 @@ public class User implements Serializable {
 		this.city = city;
 	}
 
-	public Area getArea() {
-		return area;
-	}
-
-	public void setArea(Area area) {
-		this.area = area;
-	}
+	
 
 	public String getSex() {
 		return sex;

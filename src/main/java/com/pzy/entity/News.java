@@ -10,7 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.apache.struts2.json.annotations.JSON;
-
+/**
+ * 新闻
+ * @author Administrator
+ *
+ */
 @Entity
 @Table(name = "t_news")
 public class News {

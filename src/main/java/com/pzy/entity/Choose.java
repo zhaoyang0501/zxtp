@@ -1,6 +1,9 @@
 package com.pzy.entity;
 
 import java.sql.Date;
+/**
+ * 用户一次投票记录
+ */
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

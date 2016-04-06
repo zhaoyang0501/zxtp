@@ -6,10 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.pzy.entity.Category;
-import com.pzy.entity.VoteResult;
 public interface CategoryRepository extends PagingAndSortingRepository<Category, Long>,JpaSpecificationExecutor<Category>{
     
-	@Query(value = "select t1.*,t2.num from "+ 
+	@Query(value = "select t1.*,IFNULL(t2.num,0) from "+ 
 					"(select id, name from t_item t1 where t1.category_id=?1 ) t1 "+ 
 					"left JOIN "+ 
 					"(select item,count(1) num from t_choose  where category=?1 group by item ) t2 "+ 

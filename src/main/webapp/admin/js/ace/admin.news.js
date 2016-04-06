@@ -53,8 +53,6 @@ jQuery.adminNews = {
 						"mDataProp" : "id"
 					},{
 						"mDataProp" : "title"
-					},{
-						"mDataProp" : "context"
 					}, {
 						"mDataProp" : "createDate"
 					}, {
@@ -63,15 +61,6 @@ jQuery.adminNews = {
 					"aoColumnDefs" : [
 						{
 							'aTargets' : [3],
-							'fnRender' : function(oObj, sVal) {
-								if(sVal.length>10)
-									return sVal.substring(0,10)+".....";
-								else 
-									return sVal;
-							}
-						},
-						{
-							'aTargets' : [4],
 							'fnRender' : function(oObj, sVal) {
 								return ""+
 								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminNews.deleteNews("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";

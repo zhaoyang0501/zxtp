@@ -16,7 +16,7 @@ import com.pzy.entity.News;
 import com.pzy.service.NewsService;
 /***
  * @author 263608237@qq.com
- *
+ *新闻管理
  */
 @Namespace("/admin/news")
 @ParentPackage("json-default") 

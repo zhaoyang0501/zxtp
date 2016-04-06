@@ -16,7 +16,7 @@ import com.pzy.entity.User;
 import com.pzy.service.UserService;
 /***
  * @author 263608237@qq.com
- *
+ *注册用户管理
  */
 @Namespace("/admin/user")
 @ParentPackage("json-default")  
@@ -77,7 +77,6 @@ public class UserAction  extends ActionSupport{
     User userToupdate= userService.find(user.getId());
     userToupdate.setAddress(user.getAddress());
     userToupdate.setEmail(user.getEmail());
-    userToupdate.setArea(user.getArea());
     userToupdate.setCity(user.getCity());
     userToupdate.setName(user.getName());
     userToupdate.setNickname(user.getNickname());

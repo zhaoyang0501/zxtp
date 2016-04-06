@@ -18,6 +18,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.pzy.entity.Choose;
+import com.pzy.entity.User;
 import com.pzy.repository.ChooseRepository;
 /***
  * 
@@ -37,6 +38,18 @@ public class ChooseService {
      public List<Choose> findAll() {
          return (List<Choose>) chooseRepository.findAll();
      }
+     
+     public List<Choose> findByUser(final User user) {
+         Specification<Choose> spec = new Specification<Choose>() {
+              public Predicate toPredicate(Root<Choose> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+              Predicate predicate = cb.conjunction();
+                   predicate.getExpressions().add(cb.equal(root.get("user").as(User.class),user));
+              return predicate;
+              }
+         };
+        return chooseRepository.findAll(spec);
+     }
+     
      public Page<Choose> findAll(final int pageNumber, final int pageSize,final String name){
          PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, new Sort(Direction.DESC, "id"));
          Specification<Choose> spec = new Specification<Choose>() {

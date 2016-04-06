@@ -89,15 +89,20 @@
 				<tr>
 					  <th>主题</th>
 						<th>我的选择</th>
-						<th>投票日期</th>
+						<th>我的选择</th>
+						<th>日期</th>
 				 </tr>
 			</thead>
 			<tbody>
-			<tr>
-					 	 <th>你选择你支持的校长</th>
-						<th>潘小琪</th>
-						<th>2016-04-05 </th>
+			<c:forEach items="${chooses }" var="bean">
+			 	<tr>
+					 	 <th>${bean.category.name }</th>
+						<th>${bean.user.name }</th>
+						<th>${bean.item.name}</th>
+						<th>${bean.createDate}</th>
 				 </tr>
+			</c:forEach>
+			
 			</tbody>
 			</table>
             </div>

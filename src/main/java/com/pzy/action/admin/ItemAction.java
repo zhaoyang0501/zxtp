@@ -1,6 +1,5 @@
 package com.pzy.action.admin;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,18 +10,15 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.pzy.entity.BigType;
 import com.pzy.entity.Category;
 import com.pzy.entity.Item;
-import com.pzy.service.BigTypeService;
 import com.pzy.service.CategoryService;
 
 /***
  * @author 263608237@qq.com
- *
+ *投票选项
  */
 @Namespace("/admin/item")
 @ParentPackage("json-default")
@@ -41,12 +37,8 @@ public class ItemAction extends ActionSupport {
 	private Category category;
 	private Item item;
 	private List<Category> categorys;
-	private List<BigType> bigtypes;
 	@Autowired
 	private CategoryService categoryService;
-	@Autowired
-	private BigTypeService bigTypeService;
-	
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/item/index.jsp") })
 	public String index() {
 		categorys = categoryService.findCategorys();
@@ -174,13 +166,6 @@ public class ItemAction extends ActionSupport {
 
 	public void setCategorys(List<Category> categorys) {
 		this.categorys = categorys;
-	}
-	public List<BigType> getBigtypes() {
-		return bigtypes;
-	}
-
-	public void setBigtypes(List<BigType> bigtypes) {
-		this.bigtypes = bigtypes;
 	}
 
 	public Item getItem() {
